@@ -1,3 +1,12 @@
-# SkillCamp Main Site
+# SkillCamp Main Website
 
-This is the main website for the SkillCamp group.
+Skill Camp's main website
+
+## Getting Started
+
+To install dependencies and run the dev environment
+
+```bash
+npm install
+npm run start
+```
