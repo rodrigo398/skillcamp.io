@@ -1,45 +1,53 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
+import Link from 'gatsby-link'
 
-import Header from '../components/header'
 import './index.css'
+import styled from 'styled-components'
 
-const Layout = ({ children, data }) => (
-  <div>
-    <Helmet
-      title={data.site.siteMetadata.title}
-      meta={[
-        { name: 'description', content: 'Sample' },
-        { name: 'keywords', content: 'sample, something' },
-      ]}
-    />
-    <Header siteTitle={data.site.siteMetadata.title} />
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '0px 1.0875rem 1.45rem',
-        paddingTop: 0,
-      }}
-    >
-      {children()}
-    </div>
-  </div>
-)
-
-Layout.propTypes = {
-  children: PropTypes.func,
-}
-
-export default Layout
-
-export const query = graphql`
-  query SiteTitleQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
+const IndexLayout = styled.div`
+  margin: 0 auto;
+  margin-top: 1rem;
+  max-width: 950px;
+  padding: 0 1rem;
+  h1 {
+    display: inline;
+  }
+  a {
+    text-decoration: none;
+  }
+  ul {
+    list-style: none;
+  }
+  .nav-list {
+    float: right;
+    list-style: none;
+    text-decoration: none;
   }
 `
+const ListLinkLayout = styled.li`
+  display: inline-block;
+  margin-right: 1rem;
+  text-decoration: none;
+`
+
+const ListLink = props => (
+  <ListLinkLayout>
+    <Link to={props.to}>{props.children}</Link>
+  </ListLinkLayout>
+)
+
+const Index = ({ children }) => (
+  <IndexLayout>
+    <h1>Skill Camp</h1>
+    <ul className="nav-list">
+      <ListLink to="/about/">What is Skill Camp?</ListLink>
+      <ListLink to="/">Knowledgebase</ListLink>
+      <ListLink to="/">Projects</ListLink>
+      <ListLink to="/">Blog</ListLink>
+      <ListLink to="/contact/">Contact</ListLink>
+    </ul>
+    {children()}
+  </IndexLayout>
+)
+
+export default Index

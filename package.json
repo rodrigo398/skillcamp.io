@@ -5,7 +5,7 @@
   "private": true,
   "bugs": "https://gitlab.com/skillcamp/skillcamp.io/issues",
   "dependencies": {
-    "gatsby": "^1.9.270",
+    "gatsby": "^1.9.272",
     "gatsby-link": "^1.6.40",
     "gatsby-plugin-react-helmet": "^2.0.10",
     "gatsby-plugin-styled-components": "^2.0.11",
