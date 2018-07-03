@@ -11,13 +11,13 @@ const Container = styled.div`
   max-width: 1140px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
   align-items: center;
   @media screen and (max-width: 600px) {
     grid-template-columns: repeat(1, 1fr);
   }
-  padding: 20px 0 0 0;
+  padding: 80px 0 0 0;
 `
 
 const BackToTop = styled.div`
@@ -26,7 +26,7 @@ const BackToTop = styled.div`
     color: #000000;
     font-size: 20px;
     text-decoration: none;
-    padding: 10px;
+    padding: 20px 40px;
     display: block;
     max-width: 240px;
     text-align: center;
@@ -42,6 +42,7 @@ const BackToTop = styled.div`
 
 const Copyright = styled.div`
   text-align: right;
+  font-style: italic;
   @media screen and (max-width: 600px) {
     text-align: center;
   }
@@ -49,6 +50,7 @@ const Copyright = styled.div`
 
 const Menu = styled.div`
   text-align: left;
+  font-weight: bold;
   a:link,
   a:visited,
   a:active {
@@ -61,72 +63,34 @@ const Menu = styled.div`
   }
 `
 
-const SubscribeInput = styled.input`
-  background: #ffffff;
-  color: #000000;
-  padding: 10px 20px;
-  outline: none;
-  border: none;
-  max-width: 440px;
-  width: 100%;
-`
-
-const SubscribeButton = styled.button`
-  background: transparent;
-  position: absolute;
-  z-index: 10;
-  right: 0;
-  top: 30px;
-  border: none;
-  color: #fc5e4f;
-  cursor: pointer;
-`
-
-const Subscribe = styled.div`
-  text-align: right;
-  padding: 20px 0;
-  position: relative;
-  @media screen and (max-width: 600px) {
-    text-align: center;
-  }
-`
-
-class Footer extends React.Component {
-  scrollUp = () => {
-    console.log('here')
+const Footer = () => {
+  const scrollUp = () => {
+    //TODO: Find a better solution
     const doc = document.documentElement
     const top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
 
     if (top > 0) {
       window.scrollTo(0, top - 15)
-      setTimeout(this.scrollUp, 10)
+      setTimeout(scrollUp(), 10)
     }
   }
 
-  render() {
-    return (
-      <FooterWrapper>
-        <Container>
-          <Menu>
-            <Link to="/about">about</Link>
-            <Link to="/projects">projects</Link>
-            <Link to="/blog">blog</Link>
-            <Link to="/contact">contact</Link>
-          </Menu>
-          <Subscribe>
-            <form>
-              <SubscribeInput placeholder="Your email" />
-              <SubscribeButton>subscribe &#8594;</SubscribeButton>
-            </form>
-          </Subscribe>
-          <BackToTop>
-            <button onClick={this.scrollUp}>Back to Top</button>
-          </BackToTop>
-          <Copyright>&copy; 2018 All rights reserved.</Copyright>
-        </Container>
-      </FooterWrapper>
-    )
-  }
+  return (
+    <FooterWrapper>
+      <Container>
+        <BackToTop>
+          <button onClick={() => scrollUp()}>Back to Top</button>
+        </BackToTop>
+        <Menu>
+          <Link to="/about">about</Link>
+          <Link to="/projects">projects</Link>
+          <Link to="/blog">blog</Link>
+          <Link to="/contact">contact</Link>
+        </Menu>
+        <Copyright>&copy; 2018 All rights reserved.</Copyright>
+      </Container>
+    </FooterWrapper>
+  )
 }
 
 export default Footer

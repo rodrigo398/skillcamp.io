@@ -14,7 +14,7 @@ const Container = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
   align-items: center;
-  min-height: 60px;
+  min-height: 80px;
   @media screen and (max-width: 600px) {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -22,7 +22,7 @@ const Container = styled.div`
 
 const Join = styled.div`
   a {
-    background: #2c9f73;
+    background: #f12e43;
     color: #ffffff;
     font-size: 20px;
     text-decoration: none;
@@ -50,6 +50,7 @@ const Dash = styled.div`
 
 const Menu = styled.div`
   text-align: right;
+  font-weight: bold;
   a:link,
   a:visited,
   a:active {
@@ -66,7 +67,10 @@ const Header = ({ siteTitle }) => (
   <HeaderWrapper>
     <Container>
       <Join>
-        <a href="http://skillcamp-io.slack.com" target="_blank">
+        <a
+          href="https://join.slack.com/t/skillcamp-io/shared_invite/enQtMzgxMjM5NjU1OTU4LTIzNDIzZTA3YTY0ZTY1NWVmMDUxZDllZjVmZjNiZDRiZTdhN2RhZjhhZTI5MGQxNzY1ZDlhNTAxYTlmNWRkYzA"
+          target="_blank"
+        >
           Join Our Slack Channel
         </a>
       </Join>
@@ -77,7 +81,9 @@ const Header = ({ siteTitle }) => (
         <Link to="/about">about</Link>
         <Link to="/projects">projects</Link>
         <Link to="/blog">blog</Link>
-        <Link to="/contact">contact</Link>
+        <Link to="/contact" style={{ paddingRight: 0 }}>
+          contact
+        </Link>
       </Menu>
     </Container>
   </HeaderWrapper>
