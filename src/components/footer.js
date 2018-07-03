@@ -82,6 +82,7 @@ const Footer = () => {
           <button onClick={() => scrollUp()}>Back to Top</button>
         </BackToTop>
         <Menu>
+          <Link to="/">home</Link>
           <Link to="/about">about</Link>
           <Link to="/projects">projects</Link>
           <Link to="/blog">blog</Link>
