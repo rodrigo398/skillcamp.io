@@ -8,34 +8,35 @@ const HeaderWrapper = styled.div`
 `
 
 const Container = styled.div`
-  max-width: 1140px;
+  max-width: 1440px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
   align-items: center;
-  min-height: 80px;
+  min-height: 70px;
   @media screen and (max-width: 600px) {
     grid-template-columns: repeat(1, 1fr);
   }
 `
 
-const Join = styled.div`
-  a {
-    background: #f12e43;
-    color: #ffffff;
-    font-size: 20px;
-    text-decoration: none;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 10px;
-    display: block;
-    max-width: 240px;
-    text-align: center;
-  }
+const Button = styled.a`
+  width: 200px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom right, #ed6e35, #f12e43);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  justify-self: start;
+  margin-left: 8px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
   @media screen and (max-width: 600px) {
-    grid-template-columns: repeat(1, 1fr);
-    margin: 0 auto;
+    justify-self: center;
+    margin: 10px 0;
   }
 `
 
@@ -50,13 +51,18 @@ const Dash = styled.div`
 
 const Menu = styled.div`
   text-align: right;
-  font-weight: bold;
+  font-weight: lighter;
+  margin-right: 8px;
   a:link,
   a:visited,
   a:active {
-    padding: 0 20px;
+    margin: 0 8px;
     color: #ffffff;
     text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
   @media screen and (max-width: 600px) {
     text-align: center;
@@ -66,14 +72,12 @@ const Menu = styled.div`
 const Header = ({ siteTitle }) => (
   <HeaderWrapper>
     <Container>
-      <Join>
-        <a
-          href="https://join.slack.com/t/skillcamp-io/shared_invite/enQtMzgxMjM5NjU1OTU4LTIzNDIzZTA3YTY0ZTY1NWVmMDUxZDllZjVmZjNiZDRiZTdhN2RhZjhhZTI5MGQxNzY1ZDlhNTAxYTlmNWRkYzA"
-          target="_blank"
-        >
-          Join Our Slack Channel
-        </a>
-      </Join>
+      <Button
+        href="https://join.slack.com/t/skillcamp-io/shared_invite/enQtMzgxMjM5NjU1OTU4LTIzNDIzZTA3YTY0ZTY1NWVmMDUxZDllZjVmZjNiZDRiZTdhN2RhZjhhZTI5MGQxNzY1ZDlhNTAxYTlmNWRkYzA"
+        target="_blank"
+      >
+        Join Us On Slack
+      </Button>
       <Dash>
         <hr />
       </Dash>
@@ -82,9 +86,7 @@ const Header = ({ siteTitle }) => (
         <Link to="/about">about</Link>
         <Link to="/projects">projects</Link>
         <Link to="/blog">blog</Link>
-        <Link to="/contact" style={{ paddingRight: 0 }}>
-          contact
-        </Link>
+        <Link to="/contact">contact</Link>
       </Menu>
     </Container>
   </HeaderWrapper>

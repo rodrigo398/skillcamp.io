@@ -16,7 +16,7 @@ const PhilosiphyWrapper = styled.div`
   display: grid;
   grid-template-areas: 'title title';
   grid-template-columns: 2fr 1fr;
-  grid-auto-rows: minmax(auto, 250px);
+  grid-auto-rows: minmax(auto, 200px);
   grid-gap: 20px;
   align-items: center;
   justify-content: center;
@@ -47,6 +47,10 @@ const TitleBar = styled.span`
   left: 42px;
   bottom: -17px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+
+  @media screen and (max-width: 600px) {
+    left: 36px;
+  }
 `
 
 const Pitch = styled.p`
@@ -56,23 +60,33 @@ const Pitch = styled.p`
   letter-spacing: 0.8px;
   line-height: 30px;
   font-weight: 100;
+  max-width: 700px;
+  justify-self: center;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 750px) {
     font-size: 20px;
     text-align: center;
   }
 `
 
-const Button = styled.button`
-  background-color: #ed6e35;
-  color: white;
+const Button = styled.a`
   width: 250px;
   height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom right, #ed6e35, #f12e43);
+  color: white;
   border: none;
   border-radius: 5px;
-  justify-self: center;
+  justify-self: start;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
   margin-right: 8px;
+  text-decoration: none;
+  @media screen and (max-width: 750px) {
+    justify-self: center;
+    margin: 0;
+  }
 `
 
 export default () => (
@@ -86,6 +100,11 @@ export default () => (
       camp aim to provide a platform to learn, try new roles, and collaborate
       with others. All while building meaningful and developer focused projects.
     </Pitch>
-    <Button>Join Us On Slack</Button>
+    <Button
+      href="https://join.slack.com/t/skillcamp-io/shared_invite/enQtMzgxMjM5NjU1OTU4LTIzNDIzZTA3YTY0ZTY1NWVmMDUxZDllZjVmZjNiZDRiZTdhN2RhZjhhZTI5MGQxNzY1ZDlhNTAxYTlmNWRkYzA"
+      target="_blank"
+    >
+      Join Us On Slack
+    </Button>
   </PhilosiphyWrapper>
 )
