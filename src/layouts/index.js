@@ -1,10 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-
+import styled from 'styled-components'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import './index.css'
+
+const PageContainer = styled.div`
+  // header height
+  margin-top: 60px;
+  @media screen and (max-width: 600px) {
+    // mobile header height
+    margin-top: 0;
+  }
+`
 
 const Layout = ({ children, data }) => (
   <div>
@@ -16,8 +25,7 @@ const Layout = ({ children, data }) => (
       ]}
     />
     <Header siteTitle={data.site.siteMetadata.title} />
-    <div>{children()}</div>
-
+    <PageContainer>{children()}</PageContainer>
     <Footer />
   </div>
 )

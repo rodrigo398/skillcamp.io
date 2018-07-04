@@ -5,6 +5,14 @@ import styled from 'styled-components'
 const HeaderWrapper = styled.div`
   background: #141414;
   color: #ffffff;
+  position: fixed;
+  width: 100vw;
+  z-index: 100;
+  top: 0;
+
+  @media screen and (max-width: 600px) {
+    position: relative;
+  }
 `
 
 const Container = styled.div`
@@ -14,7 +22,7 @@ const Container = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
   align-items: center;
-  min-height: 70px;
+  min-height: 60px;
   @media screen and (max-width: 600px) {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -22,7 +30,7 @@ const Container = styled.div`
 
 const Button = styled.a`
   width: 200px;
-  height: 50px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,6 +43,8 @@ const Button = styled.a`
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
   text-decoration: none;
   @media screen and (max-width: 600px) {
+    width: 200px;
+    height: 50px;
     justify-self: center;
     margin: 10px 0;
   }
@@ -56,7 +66,7 @@ const Menu = styled.div`
   a:link,
   a:visited,
   a:active {
-    margin: 0 8px;
+    padding: 8px;
     color: #ffffff;
     text-decoration: none;
   }
@@ -66,6 +76,7 @@ const Menu = styled.div`
   }
   @media screen and (max-width: 600px) {
     text-align: center;
+    margin-bottom: 8px;
   }
 `
 

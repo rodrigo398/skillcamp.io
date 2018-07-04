@@ -8,7 +8,7 @@ const FooterWrapper = styled.div`
 `
 
 const Container = styled.div`
-  max-width: 1140px;
+  max-width: 1440px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -54,12 +54,17 @@ const Menu = styled.div`
   a:link,
   a:visited,
   a:active {
-    padding: 0 20px;
+    padding: 15px;
     color: #000000;
     text-decoration: none;
   }
   @media screen and (max-width: 600px) {
     text-align: center;
+    a:link,
+    a:visited,
+    a:active {
+      padding: 10px;
+    }
   }
 `
 
