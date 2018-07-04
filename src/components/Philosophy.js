@@ -21,7 +21,6 @@ const PhilosiphyWrapper = styled.div`
   align-items: center;
   justify-content: center;
 
-  font-family: Avenir sans-serif;
   border-right: solid 10px rgba(123, 189, 223, 1);
   border-left: solid 10px rgba(123, 189, 223, 1);
 
