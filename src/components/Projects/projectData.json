@@ -3,18 +3,18 @@
     "title": "GitNotes",
     "description":
       "GitNotes is a web-based note taking application, backed by git",
-    "imageURL": ""
+    "imgURL": "https://picsum.photos/400/400?image=867"
   },
   {
     "title": "SkillCamp",
     "description":
       "SkillCamp is an open source community built by developers, for developers",
-    "imageURL": ""
+    "imgURL": "https://picsum.photos/400/400?image=883"
   },
   {
     "title": "Skill Camper",
     "description":
       "Skill Camper is a slack bot to help with the Skill Camp on boarding process",
-    "imageURL": ""
+    "imgURL": "https://picsum.photos/400/400?image=15"
   }
 ]
