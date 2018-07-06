@@ -95,8 +95,12 @@ const ProjectParagraph = styled.div`
   font-weight: 100;
   color: white;
   font-size: 18px;
-  margin-left: 12px;
+
   letter-spacing: 0.5px;
+  @media screen and (max-width: 600px) {
+    border: none;
+    margin: 50px 12px;
+  }
 `
 
 const Projects = () => {
