@@ -2,22 +2,17 @@ import React from 'react'
 import styled from 'styled-components'
 
 const ProjectWrapper = styled.div`
-  height: ${props => (props.display ? '400px' : '250px')};
-  width: ${props => (props.display ? '325px' : '250px')};
+  height: ${props => (props.display ? '500px' : '300px')};
+  width: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   background: url(${props => props.imgURL});
-  margin: 0 14px;
   border-radius: 5px;
   overflow: hidden;
   cursor: pointer;
   position: relative;
-  transition: all 200ms ease-out;
-
-  &:hover {
-    transform: translateY(${props => !props.display && '-5px'});
-  }
+  transition: all 250ms ease-out;
 `
 
 const Title = styled.div`
@@ -29,43 +24,28 @@ const Title = styled.div`
   border-top: 10px solid #20a375;
   background-color: rgba(0, 0, 0, 0.7);
   font-weight: bold;
+  font-size: 24px;
   color: white;
-  animation: title 200ms ease-out;
   letter-spacing: 0.4px;
-
-  @keyframes title {
-    0% {
-      transform: translateX(-100px);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
 `
 
 const Description = styled.div`
   height: 40%;
+  width: 100%;
   color: white;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 10px;
   margin: 0;
-
   font-weight: 100;
   border-bottom: 8px solid #20a375;
-  animation: titleFade 200ms ease;
-
   background-color: rgba(0, 0, 0, 0.7);
-  backface-visibility: hidden;
-  font-size: 15px;
+  font-size: 16px;
 
-  @keyframes titleFade {
-    0% {
-      height: 100%;
-    }
-    100% {
-      height: 40%;
-    }
+  p {
+    width: 270px;
+    margin: 0;
   }
 `
 
@@ -75,20 +55,30 @@ const HoverDetails = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-self: flex-end;
   background: rgba(20, 20, 20, 0.7);
   color: white;
   padding: 20px 15px;
   border-radius: 5px;
   border-top: 10px solid #20a375;
-  animation: menuFade 150ms;
-  cursor: default;
+  animation: menuFade 200ms ease;
+  cursor: pointer;
+
+  h3 {
+    align-self: center;
+  }
+
+  p {
+    width: 300px;
+    align-self: center;
+  }
 
   @keyframes menuFade {
     0% {
-      height: 40%;
+      opacity: 0.4;
     }
     100% {
-      height: 100%;
+      opacity: 1;
     }
   }
 `
@@ -117,16 +107,16 @@ class Project extends React.Component {
     display: false,
   }
 
-  openDisplay = () => {
-    this.setState({ display: true })
+  toggleDisplay = () => {
+    this.setState(prevState => ({ display: true }))
   }
 
   componentDidMount() {
-    document.addEventListener('mouseup', this.handleClickOutside, false)
+    document.addEventListener('click', this.handleClickOutside, false)
   }
 
   componentWillUnmount() {
-    document.removeEventListener('mouseup', this.handleClickOutside, false)
+    document.removeEventListener('click', this.handleClickOutside, false)
   }
 
   handleClickOutside = e => {
@@ -139,11 +129,19 @@ class Project extends React.Component {
     const { title, description, imgURL, codeURL } = this.props
     const { display } = this.state
     return (
-      <div ref={node => (this.node = node)}>
+      <div
+        style={{
+          alignSelf: 'flex-end',
+          justifySelf: 'center',
+          width: '100%',
+          maxWidth: '500px',
+        }}
+        ref={node => (this.node = node)}
+      >
         <ProjectWrapper
           imgURL={imgURL}
           display={display}
-          onClick={this.openDisplay}
+          onMouseEnter={this.toggleDisplay}
         >
           {display ? (
             <HoverDetails className="hover-menu">
@@ -157,7 +155,12 @@ class Project extends React.Component {
               </ButtonWrapper>
             </HoverDetails>
           ) : (
-            [<Title>{title}</Title>, <Description>{description}</Description>]
+            [
+              <Title>{title}</Title>,
+              <Description>
+                <p>{description}</p>
+              </Description>,
+            ]
           )}
         </ProjectWrapper>
       </div>

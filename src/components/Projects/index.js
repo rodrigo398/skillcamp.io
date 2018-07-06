@@ -11,10 +11,18 @@ const ProjectsBackground = styled.div`
   border-right: 10px solid #20a375;
   display: flex;
   justify-content: center;
+  padding: 0 25px;
+
+  @media screen and (max-width: 600px) {
+    border: none;
+    padding: 0 15px;
+  }
 `
 
 const ProjectsWrapper = styled.div`
   min-height: 100vh;
+  width: 100%;
+  max-width: 1440px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -46,13 +54,19 @@ const ProjectsTitle = styled.h3`
 `
 
 const ProjectsContainer = styled.div`
-  height: 400px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: calc(100vw - 20px);
-  overflow-x: scroll;
-  -webkit-overflow-scrolling: touch;
+  height: fit-content;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  max-width: 100vw;
+
+  @media screen and (max-width: 1050px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (max-width: 700px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `
 
 const Button = styled(Link)`
