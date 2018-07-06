@@ -1,6 +1,6 @@
 # How to get started on contributing
 
-When contributing to this project please consider discussing the changes you wish to make, you can do this via our [issue boards]() or in our [Slack]() channel. If you have a feature request, a bug to report, or an idea, feel free to open an issue on the issue board.
+When contributing to this project please consider discussing the changes you wish to make, you can do this via our [issue boards](https://gitlab.com/skillcamp/skillcamp.io/issues) or in our [Slack](skillcamp-io.slack.com) channel. If you have a feature request, a bug to report, or an idea, feel free to open an issue on the issue board.
 
 We welcome everyone to our Slack channel, it's a great place to introduce yourself and to meet everyone that's currently contributing to various projects within Skill Camp. Come in, ask quesions, brainstorm ideas for a new project, and get people collaborating!
 
@@ -14,7 +14,7 @@ Please note that we have a Code of Conduct, please follow it when interacting wi
 
 3.  To make sure your changes won't break the project run `npm test` to run the test suite.
 
-4.  We request that commit messages start with a tag indicating its purpose. `fix:`, `doc:`, `chore`, `feat:`, for example, this makes everything clearer in the Git history. You can optionally break down these into areas such as `feat(sidebar):`.
+4.  We request that commit messages start with a tag indicating its purpose. `fix:`, `doc:`, `chore:`, `feat:`, for example, this makes everything clearer in the Git history. You can optionally break down these into areas such as `feat(landing):`.
 
 5.  When you are ready for feedback on your branch create a merge request on GitLab.
 
