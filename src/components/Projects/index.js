@@ -4,8 +4,7 @@ import Link from 'gatsby-link'
 import Project from './Project'
 import projectData from './projectData.json'
 
-const ProjectsBackground = styled.div`
-  min-height: 100vh;
+const Background = styled.div`
   background: #141414;
   border-left: 10px solid #20a375;
   border-right: 10px solid #20a375;
@@ -13,58 +12,50 @@ const ProjectsBackground = styled.div`
   justify-content: center;
   padding: 0 25px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 680px) {
     border: none;
     padding: 0 15px;
   }
 `
 
-const ProjectsWrapper = styled.div`
+const Wrapper = styled.div`
   min-height: 100vh;
   width: 100%;
   max-width: 1440px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
 `
 
-const ProjectsHeader = styled.div`
-  width: 100%;
-  min-height: 200px;
+const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 45px 12px 30px 12px;
+  margin: 70px 15px;
 `
 
-const ProjectsTitle = styled.h3`
-  color: white;
-  font-size: 18px;
-  margin: 0;
+const Title = styled.h3`
   position: relative;
+  color: white;
+  margin: 0;
+  font-size: 18px;
 
   span {
-    height: 5px;
-    width: 50px;
     position: absolute;
-    background-color: #20a375;
     bottom: -10px;
     left: 0;
+    height: 5px;
+    width: 50px;
+    background-color: #20a375;
   }
 `
 
 const ProjectsContainer = styled.div`
-  height: fit-content;
-  margin-bottom: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
-  max-width: 100vw;
 
-  @media screen and (max-width: 1050px) {
+  @media screen and (max-width: 1000px) {
     grid-template-columns: repeat(2, 1fr);
   }
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 680px) {
     grid-template-columns: repeat(1, 1fr);
   }
 `
@@ -75,64 +66,57 @@ const Button = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: transparent;
   color: white;
-  font-size: 16px;
+  background-color: transparent;
   border: solid 2px white;
+  font-size: 16px;
   text-decoration: none;
-  transition: all 100ms;
+  transition: background-color 100ms;
 
   &:hover {
     background-color: #20a375;
   }
 `
 
-const ProjectParagraph = styled.div`
-  max-width: 800px;
-  min-height: 200px;
-  display: flex;
-  align-items: center;
-  font-weight: 100;
+const Paragraph = styled.div`
+  max-width: 600px;
   color: white;
+  margin: 70px 15px;
+  font-weight: 100;
   font-size: 18px;
-
   letter-spacing: 0.5px;
+
   @media screen and (max-width: 600px) {
-    border: none;
-    margin: 50px 12px;
+    text-align: center;
   }
 `
 
 const Projects = () => {
   const renderProjects = () => {
-    return projectData.map(project => (
-      <Project
-        title={project.title}
-        description={project.description}
-        imgURL={project.imgURL}
-      />
-    ))
+    return projectData.map(project => <Project project={project} />)
   }
 
   return (
-    <ProjectsBackground>
-      <ProjectsWrapper>
-        <ProjectsHeader>
-          <ProjectsTitle>
+    <Background>
+      <Wrapper>
+        <Header>
+          <Title>
             Our Projects
             <span />
-          </ProjectsTitle>
+          </Title>
           <Button to="/projects">All Projects</Button>
-        </ProjectsHeader>
+        </Header>
         <ProjectsContainer>{renderProjects()}</ProjectsContainer>
-        <ProjectParagraph>
-          Our projects aren’t just programming exercises. Come create real and
-          useful products. Make a impact by contrubuting to some of our open
-          sourced projects. Or do you have an idea you want to open source? We
-          can help you get your project off the ground.
-        </ProjectParagraph>
-      </ProjectsWrapper>
-    </ProjectsBackground>
+        <Paragraph>
+          Our projects aren't just programming exercises. Come create real and
+          useful products. Make a impact by contributing to some of our open
+          sourced projects.
+          <br /> <br />
+          Do you have an idea that you want to open source? We can help you get
+          your project off the ground!
+        </Paragraph>
+      </Wrapper>
+    </Background>
   )
 }
 

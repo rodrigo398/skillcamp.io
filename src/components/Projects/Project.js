@@ -1,47 +1,46 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const ProjectWrapper = styled.div`
-  height: ${props => (props.display ? '500px' : '300px')};
+const Wrapper = styled.div`
+  position: relative;
+  height: 300px;
   width: 100%;
+  max-width: 500px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  background: url(${props => props.imgURL});
+  justify-self: center;
+  background: url(${props => props.imgURL}) center;
+  background-size: cover;
   border-radius: 5px;
-  overflow: hidden;
-  cursor: pointer;
-  position: relative;
-  transition: all 250ms ease-out;
 `
 
 const Title = styled.div`
   position: absolute;
   top: 30px;
-  margin: 0 auto;
+  color: white;
+  background: rgba(20, 20, 20, 0.8);
   padding: 10px 15px;
   border-radius: 5px;
   border-top: 10px solid #20a375;
-  background-color: rgba(0, 0, 0, 0.7);
   font-weight: bold;
   font-size: 24px;
-  color: white;
   letter-spacing: 0.4px;
 `
 
 const Description = styled.div`
-  height: 40%;
+  height: 35%;
   width: 100%;
-  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  color: white;
+  background: rgba(20, 20, 20, 0.8);
   margin: 0;
-  font-weight: 100;
-  border-bottom: 8px solid #20a375;
-  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border-bottom: 10px solid #20a375;
   font-size: 16px;
+  font-weight: 100;
 
   p {
     width: 270px;
@@ -49,35 +48,31 @@ const Description = styled.div`
   }
 `
 
-const HoverDetails = styled.div`
+const HoverContainer = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-self: flex-end;
-  background: rgba(20, 20, 20, 0.7);
   color: white;
+  background: rgba(20, 20, 20, 0.7);
   padding: 20px 15px;
-  border-radius: 5px;
   border-top: 10px solid #20a375;
-  animation: menuFade 200ms ease;
-  cursor: pointer;
+  cursor: default;
 
-  h3 {
-    align-self: center;
-  }
+  animation: light-fade 250ms ease;
 
+  h3,
   p {
-    width: 300px;
     align-self: center;
+    max-width: 300px;
   }
 
-  @keyframes menuFade {
-    0% {
-      opacity: 0.4;
+  @keyframes light-fade {
+    from {
+      opacity: 0.5;
     }
-    100% {
+    to {
       opacity: 1;
     }
   }
@@ -85,7 +80,7 @@ const HoverDetails = styled.div`
 
 const ButtonWrapper = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 `
 
 const Button = styled.a`
@@ -94,11 +89,11 @@ const Button = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
-  color: ${props => (props.code ? 'white' : '#20a375')};
-  background-color: ${props => (props.code ? '#20a375' : 'white')};
-  text-decoration: none;
+  color: ${props => (props.green ? 'white' : '#20a375')};
+  background-color: ${props => (props.green ? '#20a375' : 'white')};
   border-radius: 100px;
+  font-size: 16px;
+  text-decoration: none;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 `
 
@@ -107,63 +102,46 @@ class Project extends React.Component {
     display: false,
   }
 
-  toggleDisplay = () => {
-    this.setState(prevState => ({ display: true }))
-  }
+  openHover = () => this.setState({ display: true })
 
-  componentDidMount() {
-    document.addEventListener('click', this.handleClickOutside, false)
-  }
+  closeHover = () => this.setState({ display: false })
 
-  componentWillUnmount() {
-    document.removeEventListener('click', this.handleClickOutside, false)
-  }
-
-  handleClickOutside = e => {
-    if (this.state.display && !this.node.contains(e.target)) {
-      this.setState({ display: false })
-    }
+  renderHover = () => {
+    const { title, description, codeURL, siteURL } = this.props.project
+    return (
+      <HoverContainer>
+        <h3>{title}</h3>
+        <p>{description}</p>
+        <ButtonWrapper>
+          <Button href={codeURL} target="_blank" green="true">
+            View Code
+          </Button>
+          <Button href={siteURL} target="_blank">
+            Live Demo
+          </Button>
+        </ButtonWrapper>
+      </HoverContainer>
+    )
   }
 
   render() {
-    const { title, description, imgURL, codeURL } = this.props
+    const { title, description, imgURL } = this.props.project
     const { display } = this.state
     return (
-      <div
-        style={{
-          alignSelf: 'flex-end',
-          justifySelf: 'center',
-          width: '100%',
-          maxWidth: '500px',
-        }}
-        ref={node => (this.node = node)}
+      <Wrapper
+        imgURL={imgURL}
+        onMouseEnter={this.openHover}
+        onMouseLeave={this.closeHover}
       >
-        <ProjectWrapper
-          imgURL={imgURL}
-          display={display}
-          onMouseEnter={this.toggleDisplay}
-        >
-          {display ? (
-            <HoverDetails className="hover-menu">
-              <h3>{title}</h3>
-              <p>{description}</p>
-              <ButtonWrapper>
-                <Button href={`${codeURL}`} code="true">
-                  View Code
-                </Button>
-                <Button href={`${codeURL}`}>Live Demo</Button>
-              </ButtonWrapper>
-            </HoverDetails>
-          ) : (
-            [
+        {display
+          ? this.renderHover()
+          : [
               <Title>{title}</Title>,
               <Description>
                 <p>{description}</p>
               </Description>,
-            ]
-          )}
-        </ProjectWrapper>
-      </div>
+            ]}
+      </Wrapper>
     )
   }
 }
