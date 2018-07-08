@@ -4,4 +4,4 @@
 
 <!-- Do not remove -->
 
-/label ~C-feature
+/label ~"Type: Feature"

@@ -15,4 +15,4 @@
 
 <!-- Do not remove -->
 
-/label ~C-bug
+/label ~"Type: Bug"
