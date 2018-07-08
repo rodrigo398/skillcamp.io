@@ -41,6 +41,7 @@ const Description = styled.div`
   border-bottom: 10px solid #20a375;
   font-size: 16px;
   font-weight: 100;
+  border-radius: 0 0 5px 5px;
 
   p {
     width: 270px;
@@ -57,6 +58,7 @@ const HoverContainer = styled.div`
   color: white;
   background: rgba(20, 20, 20, 0.7);
   padding: 20px 15px;
+  border-radius: 5px;
   border-top: 10px solid #20a375;
   cursor: default;
 

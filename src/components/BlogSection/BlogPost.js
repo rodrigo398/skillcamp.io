@@ -8,11 +8,12 @@ const Wrapper = styled(Link)`
   align-items: center;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 150ms ease;
+  transition: all 200ms ease-out;
 
   img {
-    transition: filter 200ms ease;
-    filter: grayscale(80%);
+    transition: all 200ms ease-out;
+    filter: grayscale(90%);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   }
 
   &:hover {
@@ -21,6 +22,7 @@ const Wrapper = styled(Link)`
 
     img {
       filter: grayscale(0);
+      box-shadow: 0 9px 10px rgba(0, 0, 0, 0.3);
     }
   }
 `
