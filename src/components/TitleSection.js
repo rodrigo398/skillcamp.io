@@ -8,10 +8,15 @@ const TitleSectionWrapper = styled.div`
   background-size: cover;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: ' .   title';
   @media screen and (max-width: 600px) {
     padding: 20px;
     grid-template-columns: repeat(1, 1fr);
   }
+`
+
+const TitleSection = styled.div`
+  grid-area: title;
 `
 
 const Title = styled.div`
@@ -25,7 +30,7 @@ const Title = styled.div`
   margin-bottom: 20px;
   text-align: left;
   @media screen and (max-width: 600px) {
-    padding: 20px;
+    padding: 40px 20px;
     font-size: 40px;
     width: 100%;
     text-align: center;
@@ -51,12 +56,11 @@ const TitleContent = styled.div`
 
 export default () => (
   <TitleSectionWrapper>
-    <div>{/* Empty div */}</div>
-    <div>
+    <TitleSection>
       <Title>SkillCamp.io</Title>
       <TitleContent>
         An open sourced community made for developers, by developers.
       </TitleContent>
-    </div>
+    </TitleSection>
   </TitleSectionWrapper>
 )
