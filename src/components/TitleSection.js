@@ -9,11 +9,10 @@ const TitleSectionWrapper = styled.div`
   display: grid;
   justify-items: left;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   grid-template-areas:
-    ' . . '
-    ' . title '
-    ' . . ';
+    ' .   .  '
+    ' . title';
   @media screen and (max-width: 600px) {
     grid-template-columns: repeat(1, 1fr);
   }
