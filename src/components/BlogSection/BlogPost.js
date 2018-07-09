@@ -31,7 +31,6 @@ const Image = styled.img`
   height: 200px;
   width: 200px;
   border-radius: 50%;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 
   @media screen and (max-width: 900px) and (min-width: 700px) {
     height: 150px;
