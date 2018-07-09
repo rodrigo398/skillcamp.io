@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import developer from '../images/developer_blur.jpg'
+import developer from '../images/developer_blur_1366.jpg'
 
 const TitleSectionWrapper = styled.div`
   background: url(${developer});

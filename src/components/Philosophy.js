@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import mountain from '../images/mountain.jpg'
+import mountain from '../images/mountain_1366.jpg'
 
 const PhilosiphyWrapper = styled.div`
   height: 100vh;
