@@ -4,8 +4,17 @@ import mountain from '../images/mountain.jpg'
 
 const PhilosiphyWrapper = styled.div`
   height: 100vh;
-  max-height: 800px;
   min-height: 500px;
+  align-items: center;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-areas:
+    '.     .     .     .      .     '
+    '.     .     title .      .     '
+    'pitch pitch pitch button button';
+
   background: linear-gradient(
       to bottom,
       rgba(123, 189, 223, 0.8),
@@ -13,64 +22,65 @@ const PhilosiphyWrapper = styled.div`
     ),
     url(${mountain}) no-repeat bottom center;
   background-size: cover;
-  display: grid;
-  grid-template-areas: 'title title';
-  grid-template-columns: 2fr 1fr;
-  grid-auto-rows: minmax(auto, 200px);
-  grid-gap: 20px;
-  align-items: center;
-  justify-content: center;
 
   border-right: solid 10px rgba(123, 189, 223, 1);
   border-left: solid 10px rgba(123, 189, 223, 1);
 
   @media screen and (max-width: 750px) {
-    grid-template-areas: 'title';
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 'title' 'pitch' 'button';
   }
 `
 
 const Title = styled.h3`
-  color: white;
   grid-area: title;
-  margin: 0 auto;
+  align-self: flex-start;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  color: white;
+  margin: 0;
+  font-size: 20px;
   position: relative;
-`
 
-const TitleBar = styled.span`
-  height: 5px;
-  width: 48px;
-  position: absolute;
-  background-color: white;
-  margin: 0 auto;
-  left: 42px;
-  bottom: -17px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  span {
+    height: 5px;
+    width: 40px;
+    position: absolute;
+    bottom: -10px;
+    background-color: #ffffff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
 
-  @media screen and (max-width: 600px) {
-    left: 36px;
+  @media screen and (max-width: 750px) {
+    align-self: center;
   }
 `
 
 const Pitch = styled.p`
+  max-width: 700px;
+  grid-area: pitch;
+  justify-self: center;
   color: white;
-  padding: 0 40px;
-  font-size: 24px;
+  padding-left: 20px;
+  font-size: 22px;
+  font-weight: 100;
   letter-spacing: 0.8px;
   line-height: 30px;
-  font-weight: 100;
-  max-width: 700px;
-  justify-self: center;
 
   @media screen and (max-width: 750px) {
     font-size: 20px;
+    padding: 0 30px;
     text-align: center;
   }
 `
 
 const Button = styled.a`
-  width: 250px;
   height: 60px;
+  width: 250px;
+  grid-area: button;
+  justify-self: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -78,12 +88,9 @@ const Button = styled.a`
   color: white;
   border: none;
   border-radius: 5px;
-  justify-self: start;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-  margin-right: 8px;
   text-decoration: none;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
   @media screen and (max-width: 750px) {
-    justify-self: center;
     margin: 0;
   }
 `
@@ -92,7 +99,7 @@ export default () => (
   <PhilosiphyWrapper>
     <Title>
       Philosophy
-      <TitleBar />
+      <span />
     </Title>
     <Pitch>
       Everyone should have the opportunity to grow as a developer. We at skill
