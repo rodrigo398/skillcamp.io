@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import developer from '../images/developer_blur.jpg'
+import logo from '../images/logo_alt.svg'
 
-const TitleSectionWrapper = styled.div`
+const Wrapper = styled.div`
   background: url(${developer});
   background-size: cover;
   height: 100vh;
@@ -14,7 +15,11 @@ const TitleSectionWrapper = styled.div`
     ' .   .  '
     ' . title';
   @media screen and (max-width: 600px) {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 1fr;
+    justify-items: center;
+    grid-template-areas:
+      '  .  '
+      ' title';
   }
 `
 
@@ -24,13 +29,20 @@ const TitleSection = styled.div`
 `
 
 const Title = styled.div`
+  max-width: 400px;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
-  font-size: 60px;
-  color: #ffffff;
-  text-align: left;
-  padding: 40px 30px;
+  padding: 20px;
   margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 360px;
+    margin: 0;
+  }
+
   @media screen and (max-width: 600px) {
     font-size: 40px;
     width: 100%;
@@ -38,9 +50,10 @@ const Title = styled.div`
   }
 `
 
-const TitleContent = styled.div`
+const Subtitle = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   width: 400px;
+  max-width: 400px;
   border-radius: 10px;
   font-size: 20px;
   color: #ffffff;
@@ -54,12 +67,14 @@ const TitleContent = styled.div`
 `
 
 export default () => (
-  <TitleSectionWrapper>
+  <Wrapper>
     <TitleSection>
-      <Title>SkillCamp.io</Title>
-      <TitleContent>
+      <Title>
+        <img src={logo} />
+      </Title>
+      <Subtitle>
         An open sourced community made for developers, by developers.
-      </TitleContent>
+      </Subtitle>
     </TitleSection>
-  </TitleSectionWrapper>
+  </Wrapper>
 )

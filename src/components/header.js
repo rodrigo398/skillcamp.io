@@ -1,9 +1,10 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
+import logo from '../images/logo_main.svg'
 
 const HeaderWrapper = styled.div`
-  background: #141414;
+  background: #222222;
   color: #ffffff;
   position: fixed;
   width: 100vw;
@@ -18,18 +19,20 @@ const HeaderWrapper = styled.div`
 const Container = styled.div`
   max-width: 1440px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   min-height: 60px;
   @media screen and (max-width: 600px) {
-    grid-template-columns: repeat(1, 1fr);
+    flex-direction: column;
+    min-height: 170px;
   }
 `
 
 const Button = styled.a`
   width: 200px;
+  min-width: 152px;
   height: 40px;
   display: flex;
   align-items: center;
@@ -50,19 +53,30 @@ const Button = styled.a`
   }
 `
 
-const Dash = styled.div`
-  hr {
-    background: #ffffff;
-    height: 5px;
-    margin: 0 auto;
-    width: 40px;
+const Logo = styled(Link)`
+  margin: 0 20px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+
+  img {
+    height: 30px;
+    margin: 0;
+  }
+
+  h3 {
+    height: 30px;
+    margin: 0 3px 0 0;
+    font-size: 27px;
   }
 `
 
 const Menu = styled.div`
   text-align: right;
   font-weight: lighter;
-  margin-right: 8px;
+  margin: 0 12px;
   a:link,
   a:visited,
   a:active {
@@ -83,17 +97,17 @@ const Menu = styled.div`
 const Header = ({ siteTitle }) => (
   <HeaderWrapper>
     <Container>
+      <Logo to="/">
+        <img src={logo} alt="skillcamp logo" />
+      </Logo>
+
       <Button
         href="https://join.slack.com/t/skillcamp-io/shared_invite/enQtMzgxMjM5NjU1OTU4LTIzNDIzZTA3YTY0ZTY1NWVmMDUxZDllZjVmZjNiZDRiZTdhN2RhZjhhZTI5MGQxNzY1ZDlhNTAxYTlmNWRkYzA"
         target="_blank"
       >
         Join Us On Slack
       </Button>
-      <Dash>
-        <hr />
-      </Dash>
       <Menu>
-        <Link to="/">home</Link>
         <Link to="/about">about</Link>
         <Link to="/projects">projects</Link>
         <Link to="/blog">blog</Link>
