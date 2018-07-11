@@ -30,29 +30,6 @@ const Container = styled.div`
   }
 `
 
-const Button = styled.a`
-  width: 200px;
-  min-width: 152px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(to bottom right, #ed6e35, #f12e43);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  justify-self: start;
-  margin-left: 8px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-  text-decoration: none;
-  @media screen and (max-width: 600px) {
-    width: 200px;
-    height: 50px;
-    justify-self: center;
-    margin: 10px 0;
-  }
-`
-
 const Logo = styled(Link)`
   margin: 0 20px;
   text-decoration: none;
@@ -73,10 +50,15 @@ const Logo = styled(Link)`
   }
 `
 
-const Menu = styled.div`
+const NavContainer = styled.div`
   text-align: right;
   font-weight: lighter;
   margin: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 16px;
   a:link,
   a:visited,
   a:active {
@@ -90,7 +72,38 @@ const Menu = styled.div`
   }
   @media screen and (max-width: 600px) {
     text-align: center;
-    margin-bottom: 8px;
+    margin: 0;
+    flex-direction: column-reverse;
+  }
+`
+
+const Links = styled.div`
+  display: flex;
+`
+
+const Button = styled.a`
+  font-size: 14px;
+  text-transform: uppercase;
+
+  width: 160px;
+  min-width: 152px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom right, #ed6e35, #f12e43);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  justify-self: left;
+  margin-left: 8px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  @media screen and (max-width: 600px) {
+    width: 200px;
+    height: 50px;
+    justify-self: center;
+    margin: 10px 0;
   }
 `
 
@@ -100,19 +113,20 @@ const Header = ({ siteTitle }) => (
       <Logo to="/">
         <img src={logo} alt="skillcamp logo" />
       </Logo>
-
-      <Button
-        href="https://join.slack.com/t/skillcamp-io/shared_invite/enQtMzgxMjM5NjU1OTU4LTIzNDIzZTA3YTY0ZTY1NWVmMDUxZDllZjVmZjNiZDRiZTdhN2RhZjhhZTI5MGQxNzY1ZDlhNTAxYTlmNWRkYzA"
-        target="_blank"
-      >
-        Join Us On Slack
-      </Button>
-      <Menu>
-        <Link to="/about">about</Link>
-        <Link to="/projects">projects</Link>
-        <Link to="/blog">blog</Link>
-        <Link to="/contact">contact</Link>
-      </Menu>
+      <NavContainer>
+        <Links>
+          <Link to="/about">about</Link>
+          <Link to="/projects">projects</Link>
+          <Link to="/blog">blog</Link>
+          <Link to="/contact">contact</Link>
+        </Links>
+        <Button
+          href="https://join.slack.com/t/skillcamp-io/shared_invite/enQtMzgxMjM5NjU1OTU4LTIzNDIzZTA3YTY0ZTY1NWVmMDUxZDllZjVmZjNiZDRiZTdhN2RhZjhhZTI5MGQxNzY1ZDlhNTAxYTlmNWRkYzA"
+          target="_blank"
+        >
+          Join Us On Slack
+        </Button>
+      </NavContainer>
     </Container>
   </HeaderWrapper>
 )

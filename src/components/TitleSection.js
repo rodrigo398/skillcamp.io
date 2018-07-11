@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import developer from '../images/developer_blur.jpg'
-import logo from '../images/logo_alt.svg'
+import logo from '../images/logo_main.svg'
 
 const Wrapper = styled.div`
   background: url(${developer});

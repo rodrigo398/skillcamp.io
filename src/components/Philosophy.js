@@ -88,8 +88,14 @@ const Button = styled.a`
   color: white;
   border: none;
   border-radius: 5px;
+  text-transform: uppercase;
   text-decoration: none;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    text-decoration: underline;
+  }
+
   @media screen and (max-width: 750px) {
     margin: 0;
   }
