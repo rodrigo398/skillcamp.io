@@ -31,7 +31,7 @@ const Container = styled.div`
 `
 
 const Logo = styled(Link)`
-  margin: 0 20px;
+  margin-left: 15px;
   text-decoration: none;
   display: flex;
   justify-content: center;
@@ -51,14 +51,14 @@ const Logo = styled(Link)`
 `
 
 const NavContainer = styled.div`
-  text-align: right;
-  font-weight: lighter;
-  margin: 0 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-
+  margin-right: 15px;
   font-size: 16px;
+  font-weight: lighter;
+  text-align: right;
+
   a:link,
   a:visited,
   a:active {
@@ -70,6 +70,7 @@ const NavContainer = styled.div`
   a:hover {
     text-decoration: underline;
   }
+
   @media screen and (max-width: 600px) {
     text-align: center;
     margin: 0;
@@ -82,9 +83,6 @@ const Links = styled.div`
 `
 
 const Button = styled.a`
-  font-size: 14px;
-  text-transform: uppercase;
-
   width: 160px;
   min-width: 152px;
   height: 40px;
@@ -98,6 +96,8 @@ const Button = styled.a`
   justify-self: left;
   margin-left: 8px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  text-transform: uppercase;
   text-decoration: none;
   @media screen and (max-width: 600px) {
     width: 200px;
