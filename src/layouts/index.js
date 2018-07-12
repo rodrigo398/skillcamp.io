@@ -23,7 +23,12 @@ const Layout = ({ children, data }) => (
         { name: 'description', content: 'Sample' },
         { name: 'keywords', content: 'sample, something' },
       ]}
-    />
+    >
+      <link
+        href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,700"
+        rel="stylesheet"
+      />
+    </Helmet>
     <Header siteTitle={data.site.siteMetadata.title} />
     <PageContainer>{children()}</PageContainer>
     <Footer />
