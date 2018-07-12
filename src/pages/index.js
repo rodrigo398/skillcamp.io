@@ -15,7 +15,7 @@ const IndexPage = ({ data }) => (
 
 export const query = graphql`
   query getBlogsQuery {
-    allMarkdownRemark(sort: { fields: [frontmatter___date] }) {
+    allMarkdownRemark(limit: 4, sort: { fields: [frontmatter___date] }) {
       edges {
         node {
           frontmatter {
