@@ -9,12 +9,26 @@ const IndexPage = ({ data }) => (
     <TitleSection titleImage={data.titleImage} />
     <Philosophy />
     <Projects />
-    <BlogSection />
+    <BlogSection data={data} />
   </div>
 )
 
-export const pageQuery = graphql`
-  query HeaderImageQuery {
+export const query = graphql`
+  query getBlogsQuery {
+    allMarkdownRemark(sort: { fields: [frontmatter___date] }) {
+      edges {
+        node {
+          frontmatter {
+            title
+            date(formatString: "MMMM DD, YYYY")
+            path
+            excerpt
+            imgURL
+            author
+          }
+        }
+      }
+    }
     titleImage: imageSharp(id: { regex: "/developer_blur/" }) {
       sizes(maxWidth: 2400) {
         ...GatsbyImageSharpSizes

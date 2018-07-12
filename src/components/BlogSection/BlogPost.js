@@ -60,17 +60,14 @@ const Content = styled.div`
   }
 `
 
-const BlogPost = ({ title, author, imgURL, URL }) => {
-  // TODO: wire up props to component
-
+const BlogPost = ({ frontmatter }) => {
+  const { title, author, imgURL, path } = frontmatter
   return (
-    <Wrapper to="/blog">
-      <Image src="https://picsum.photos/200/200?image=823" />
+    <Wrapper to={path}>
+      <Image src={imgURL} />
       <Content>
-        <h3 name="title">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit
-        </h3>
-        <p name="author">Jane Doe</p>
+        <h3 name="title">{title}</h3>
+        <p name="author">{author}</p>
       </Content>
     </Wrapper>
   )

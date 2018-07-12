@@ -7,9 +7,8 @@ const BlogPage = ({ data }) => {
     <div>
       {posts.map(({ node: post }) => {
         const { frontmatter } = post
-
         return (
-          <div>
+          <div key={frontmatter.path}>
             <h2>
               <Link to={frontmatter.path}>{frontmatter.title}</Link>
             </h2>

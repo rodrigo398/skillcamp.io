@@ -91,9 +91,13 @@ const Button = styled(Link)`
   }
 `
 
-const BlogSection = () => {
+const BlogSection = ({ data }) => {
+  const { edges: posts } = data.allMarkdownRemark
   const renderBlogPosts = () => {
-    // TODO: connect to a featured blog posts api
+    return posts.map(post => {
+      const { frontmatter } = post.node
+      return <BlogPost key={frontmatter.path} frontmatter={frontmatter} />
+    })
   }
 
   return (
@@ -105,12 +109,7 @@ const BlogSection = () => {
         </Title>
       </TitleWrapper>
 
-      <BlogContainer>
-        <BlogPost />
-        <BlogPost />
-        <BlogPost />
-        <BlogPost />
-      </BlogContainer>
+      <BlogContainer>{renderBlogPosts()}</BlogContainer>
 
       <Paragraph>
         Share your experience, learn from others and become an active member of

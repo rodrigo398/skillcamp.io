@@ -1,9 +1,9 @@
 ---
-path: "/blog/first-blog-post"
+path: "/blog/second-blog-post"
 date: "2018-07-12T00:42:27+00:00"
-title: "First Blog Post"
-author: "John Doe"
-excerpt: "This is our Hello World blog post!"
+title: "Second Blog Post"
+author: "Jessica Bell"
+excerpt: "This is a second test blog"
 imgURL: https://picsum.photos/300/300/?random
 ---
 
