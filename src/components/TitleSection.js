@@ -8,6 +8,7 @@ const Background = styled.div`
   min-height: 100vh;
   width: 100%;
   z-index: 0;
+  background-color: #191919;
 
   .bg_image {
     height: 100vh;
@@ -87,7 +88,7 @@ export default ({ titleImage }) => (
     <Background>
       <Img
         className="bg_image"
-        backgroundColor="#191919"
+        alt="background_developer_workspace"
         sizes={titleImage.sizes}
       />
     </Background>

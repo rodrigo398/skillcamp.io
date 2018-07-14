@@ -33,8 +33,12 @@ export const query = graphql`
       }
     }
     titleImage: imageSharp(id: { regex: "/developer_blur/" }) {
-      sizes(maxWidth: 2400) {
-        ...GatsbyImageSharpSizes
+      sizes(
+        maxWidth: 1366
+        quality: 80
+        traceSVG: { color: "#393939", threshold: 100 }
+      ) {
+        ...GatsbyImageSharpSizes_tracedSVG
       }
     }
   }
