@@ -1,12 +1,26 @@
 import React from 'react'
 import styled from 'styled-components'
-import developer from '../images/developer_blur.jpg'
+import Img from 'gatsby-image'
 import logo from '../images/logo_main.svg'
 
+const Background = styled.div`
+  position: absolute;
+  min-height: 100vh;
+  width: 100%;
+  z-index: 0;
+
+  .bg_image {
+    height: 100vh;
+  }
+  @media screen and (max-width: 600px) {
+    padding: 0;
+  }
+`
+
 const Wrapper = styled.div`
-  background: url(${developer});
-  background-size: cover;
+  position: relative;
   height: 100vh;
+  width: 100vw;
   display: grid;
   justify-items: left;
   grid-template-columns: repeat(2, 1fr);
@@ -14,6 +28,7 @@ const Wrapper = styled.div`
   grid-template-areas:
     ' .   .  '
     ' . title';
+  overflow: hidden;
   @media screen and (max-width: 600px) {
     grid-template-columns: 1fr;
     justify-items: center;
@@ -26,6 +41,7 @@ const Wrapper = styled.div`
 const TitleSection = styled.div`
   grid-area: title;
   padding: 10px;
+  z-index: 10;
 `
 
 const Title = styled.div`
@@ -66,8 +82,15 @@ const Subtitle = styled.div`
   }
 `
 
-export default () => (
+export default ({ titleImage }) => (
   <Wrapper>
+    <Background>
+      <Img
+        className="bg_image"
+        backgroundColor="#191919"
+        sizes={titleImage.sizes}
+      />
+    </Background>
     <TitleSection>
       <Title>
         <img src={logo} />

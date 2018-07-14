@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import logo from '../images/logo_main.svg'
 
 const HeaderWrapper = styled.div`
-  background: #222222;
+  background: #191919;
   color: #ffffff;
   position: fixed;
   width: 100vw;

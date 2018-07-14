@@ -6,12 +6,15 @@
   "bugs": "https://gitlab.com/skillcamp/skillcamp.io/issues",
   "dependencies": {
     "gatsby": "^1.9.270",
+    "gatsby-image": "^1.0.54",
     "gatsby-link": "^1.6.40",
     "gatsby-plugin-react-helmet": "^2.0.10",
+    "gatsby-plugin-sharp": "^1.6.48",
     "gatsby-plugin-styled-components": "^2.0.11",
     "gatsby-plugin-typography": "^1.7.19",
     "gatsby-source-filesystem": "^1.5.38",
     "gatsby-transformer-remark": "^1.7.42",
+    "gatsby-transformer-sharp": "^1.6.27",
     "react-helmet": "^5.2.0",
     "styled-components": "^3.3.2"
   },
