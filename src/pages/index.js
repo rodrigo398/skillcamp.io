@@ -9,13 +9,16 @@ const IndexPage = ({ data }) => (
     <TitleSection titleImage={data.titleImage} />
     <Philosophy />
     <Projects />
-    <BlogSection data={data} />
+    <BlogSection blogPosts={data.blogPosts} />
   </div>
 )
 
 export const query = graphql`
-  query getBlogsQuery {
-    allMarkdownRemark(limit: 4, sort: { fields: [frontmatter___date] }) {
+  query getLandingPageData {
+    blogPosts: allMarkdownRemark(
+      limit: 4
+      sort: { fields: [frontmatter___date] }
+    ) {
       edges {
         node {
           frontmatter {

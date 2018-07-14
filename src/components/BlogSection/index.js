@@ -91,8 +91,8 @@ const Button = styled(Link)`
   }
 `
 
-const BlogSection = ({ data }) => {
-  const { edges: posts } = data.allMarkdownRemark
+const BlogSection = ({ blogPosts }) => {
+  const { edges: posts } = blogPosts
   const renderBlogPosts = () => {
     return posts.map(post => {
       const { frontmatter } = post.node
