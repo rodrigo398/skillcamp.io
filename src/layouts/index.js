@@ -6,15 +6,6 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import './index.css'
 
-const PageContainer = styled.div`
-  // header height
-  margin-top: 60px;
-  @media screen and (max-width: 600px) {
-    // mobile header height
-    margin-top: 0;
-  }
-`
-
 const Layout = ({ children, data }) => (
   <div>
     <Helmet
@@ -30,7 +21,7 @@ const Layout = ({ children, data }) => (
       />
     </Helmet>
     <Header siteTitle={data.site.siteMetadata.title} />
-    <PageContainer>{children()}</PageContainer>
+    <div>{children()}</div>
     <Footer />
   </div>
 )

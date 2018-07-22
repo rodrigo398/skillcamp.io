@@ -1,104 +1,108 @@
 import React from 'react'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
-import logo from '../images/logo_main.svg'
-
-const Background = styled.div`
-  position: absolute;
-  min-height: 100vh;
-  width: 100%;
-  z-index: 0;
-  background-color: #191919;
-
-  .bg_image {
-    height: 100vh;
-  }
-  @media screen and (max-width: 600px) {
-    padding: 0;
-  }
-`
+import background from '../images/title_background.svg'
+import dev_network from '../images/developer_network.svg'
 
 const Wrapper = styled.div`
   position: relative;
-  height: 100vh;
+  min-height: 1050px;
   width: 100vw;
-  display: grid;
-  justify-items: left;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  grid-template-areas:
-    ' .   .  '
-    ' . title';
+  max-width: 1440px;
+  margin: 0 auto;
+  background: url(${background}) no-repeat;
+  background-size: auto 800px;
+  transition: background-size 200ms ease;
+
   overflow: hidden;
-  @media screen and (max-width: 600px) {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    grid-template-areas:
-      '  .  '
-      ' title';
+
+  //display: grid;
+  //grid-template-columns: repeat(2, 1fr);
+  //grid-template-rows: repeat(5, 1fr);
+  //grid-template-areas: '.  .' '. subtitle';
+
+  @media screen and (max-width: 1000px) {
+    background-size: auto 700px;
+    min-height: 900px;
+  }
+
+  @media screen and (max-width: 700px) {
+    background-size: auto 600px;
+    min-height: 700px;
+  }
+
+  @media screen and (max-width: 500px) {
+    background-size: auto 600px;
+    grid-template-areas: 'subtitle subtitle';
   }
 `
 
-const TitleSection = styled.div`
-  grid-area: title;
-  padding: 10px;
+const TitleImage = styled.img`
+  width: 1280px;
+  max-width: 1440px;
+  position: absolute;
+  top: 180px;
+  left: -30px;
   z-index: 10;
-`
 
-const Title = styled.div`
-  max-width: 400px;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
 
-  img {
-    width: 360px;
-    margin: 0;
+  object-fit: cover;
+
+  transition: all 200ms ease;
+
+  @media screen and (max-width: 1000px) {
+    width: 1000px;
+    top: 200px;
   }
 
-  @media screen and (max-width: 600px) {
-    font-size: 40px;
-    width: 100%;
-    text-align: center;
+  @media screen and (max-width: 700px) {
+    width: 700px;
+  }
+
+  @media screen and (max-width: 500px) {
+    left: 4%;
   }
 `
 
 const Subtitle = styled.div`
-  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 215px;
+  left: 600px;
   width: 400px;
   max-width: 400px;
   border-radius: 10px;
-  font-size: 20px;
-  color: #ffffff;
+  font-size: 27px;
+  color: #222;
   text-align: left;
-  padding: 20px;
+  transition: left 200ms ease;
+  @media screen and (max-width: 1000px) {
+    font-size: 24px;
+    width: 350px;
+    left: 400px;
+  }
+  @media screen and (max-width: 700px) {
+    width: 300px;
+    left: 270px;
+  }
   @media screen and (max-width: 600px) {
-    font-size: 20px;
-    width: 100%;
+    top: 75px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
     text-align: center;
   }
 `
 
 export default ({ titleImage }) => (
   <Wrapper>
-    <Background>
-      <Img
-        className="bg_image"
-        alt="background_developer_workspace"
-        sizes={titleImage.sizes}
-      />
-    </Background>
-    <TitleSection>
-      <Title>
-        <img src={logo} />
-      </Title>
-      <Subtitle>
-        An open sourced community made for developers, by developers.
-      </Subtitle>
-    </TitleSection>
+    <TitleImage src={dev_network} />
+    <Subtitle>
+      Collaborate with developers from around the world to upgrade your skills
+    </Subtitle>
   </Wrapper>
 )
+
+// <TitleImage src={dev_network}/>

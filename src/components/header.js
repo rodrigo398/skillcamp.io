@@ -4,8 +4,8 @@ import styled from 'styled-components'
 import logo from '../images/logo_main.svg'
 
 const HeaderWrapper = styled.div`
-  background: #191919;
-  color: #ffffff;
+  background: transparent;
+  color: #111111;
   position: fixed;
   width: 100vw;
   z-index: 100;
@@ -13,6 +13,7 @@ const HeaderWrapper = styled.div`
 
   @media screen and (max-width: 600px) {
     position: relative;
+    background: #191919;
   }
 `
 
@@ -55,7 +56,7 @@ const NavContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin-right: 15px;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: lighter;
   text-align: right;
 
@@ -63,12 +64,15 @@ const NavContainer = styled.div`
   a:visited,
   a:active {
     padding: 8px;
-    color: #ffffff;
     text-decoration: none;
   }
 
   a:hover {
     text-decoration: underline;
+  }
+
+  .button {
+    color: white;
   }
 
   @media screen and (max-width: 600px) {
@@ -80,6 +84,15 @@ const NavContainer = styled.div`
 
 const Links = styled.div`
   display: flex;
+  a {
+    color: black;
+  }
+
+  @media screen and (max-width: 600px) {
+    a {
+      color: white;
+    }
+  }
 `
 
 const Button = styled.a`
@@ -89,15 +102,16 @@ const Button = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom right, #ed6e35, #f12e43);
+  background: #22a477;
   color: white;
   border: none;
   border-radius: 5px;
   justify-self: left;
   margin-left: 8px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   font-size: 15px;
   text-decoration: none;
+
   @media screen and (max-width: 600px) {
     width: 200px;
     height: 50px;
@@ -122,6 +136,7 @@ const Header = ({ siteTitle }) => (
         <Button
           href="https://join.slack.com/t/skillcamp-io/shared_invite/enQtMzgxMjM5NjU1OTU4LTIzNDIzZTA3YTY0ZTY1NWVmMDUxZDllZjVmZjNiZDRiZTdhN2RhZjhhZTI5MGQxNzY1ZDlhNTAxYTlmNWRkYzA"
           target="_blank"
+          className="button"
         >
           Join Us On Slack
         </Button>
