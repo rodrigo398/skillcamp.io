@@ -18,7 +18,6 @@ const HeaderWrapper = styled.div`
 `
 
 const Container = styled.div`
-  max-width: 1440px;
   margin: 0 auto;
   padding: 10px 0;
   display: flex;
