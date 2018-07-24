@@ -162,15 +162,21 @@ const Button = styled.a`
 class Header extends React.Component {
   state = {
     scrollHeightZero: true,
-    mobile: window.innerWidth <= 600,
+    mobile: false,
     menuActive: false,
   }
 
   toggleMenu = () =>
     this.setState(prevState => ({ menuActive: !prevState.menuActive }))
 
+  componentWillMount() {
+    if (typeof window !== undefined && window.innerWidth) {
+      this.setState({ mobile: window.innerWidth <= 600 })
+    }
+  }
+
   componentDidMount() {
-    if (typeof window !== 'undefined' && window.addEventListener) {
+    if (typeof window !== undefined) {
       window.addEventListener('resize', () => {
         if (!this.state.mobile && window.innerWidth < 600) {
           this.setState({ mobile: true })
@@ -191,6 +197,8 @@ class Header extends React.Component {
 
   render() {
     const { scrollHeightZero, mobile, menuActive } = this.state
+
+    // check to see if home, only have transparent header at top on home.
     const isHome = this.props.location.pathname === '/'
     return (
       <HeaderWrapper atTop={scrollHeightZero} isHome={isHome}>
