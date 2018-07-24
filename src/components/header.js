@@ -170,21 +170,23 @@ class Header extends React.Component {
     this.setState(prevState => ({ menuActive: !prevState.menuActive }))
 
   componentDidMount() {
-    window.addEventListener('resize', () => {
-      if (!this.state.mobile && window.innerWidth < 600) {
-        this.setState({ mobile: true })
-      } else if (this.state.mobile && window.innerWidth > 600) {
-        this.setState({ mobile: false })
-      }
-    })
+    if (window !== undefined) {
+      window.addEventListener('resize', () => {
+        if (!this.state.mobile && window.innerWidth < 600) {
+          this.setState({ mobile: true })
+        } else if (this.state.mobile && window.innerWidth > 600) {
+          this.setState({ mobile: false })
+        }
+      })
 
-    window.addEventListener('scroll', () => {
-      if (!this.state.scrollHeightZero && window.scrollY < 60) {
-        this.setState({ scrollHeightZero: true })
-      } else if (this.state.scrollHeightZero && window.scrollY > 60) {
-        this.setState({ scrollHeightZero: false })
-      }
-    })
+      window.addEventListener('scroll', () => {
+        if (!this.state.scrollHeightZero && window.scrollY < 60) {
+          this.setState({ scrollHeightZero: true })
+        } else if (this.state.scrollHeightZero && window.scrollY > 60) {
+          this.setState({ scrollHeightZero: false })
+        }
+      })
+    }
   }
 
   render() {
