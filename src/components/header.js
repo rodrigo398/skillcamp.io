@@ -169,14 +169,10 @@ class Header extends React.Component {
   toggleMenu = () =>
     this.setState(prevState => ({ menuActive: !prevState.menuActive }))
 
-  componentWillMount() {
-    if (typeof window !== undefined && window.innerWidth) {
-      this.setState({ mobile: window.innerWidth <= 600 })
-    }
-  }
-
   componentDidMount() {
     if (typeof window !== undefined) {
+      this.setState({ mobile: window.innerWidth <= 600 })
+
       window.addEventListener('resize', () => {
         if (!this.state.mobile && window.innerWidth < 600) {
           this.setState({ mobile: true })
