@@ -6,7 +6,16 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import './index.css'
 
-const Layout = ({ children, data }) => (
+const Wrapper = styled.div`
+  min-height: 100vw;
+  margin-top: 60px;
+
+  @media screen and (max-width: 600px) {
+    margin-top: 0;
+  }
+`
+
+const Layout = ({ children, data, location }) => (
   <div>
     <Helmet
       title={data.site.siteMetadata.title}
@@ -20,8 +29,8 @@ const Layout = ({ children, data }) => (
         rel="stylesheet"
       />
     </Helmet>
-    <Header siteTitle={data.site.siteMetadata.title} />
-    <div>{children()}</div>
+    <Header siteTitle={data.site.siteMetadata.title} location={location} />
+    <Wrapper>{children()}</Wrapper>
     <Footer />
   </div>
 )

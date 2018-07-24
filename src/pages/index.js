@@ -1,16 +1,25 @@
 import React from 'react'
+import styled from 'styled-components'
 import Philosophy from '../components/Philosophy'
 import Projects from '../components/Projects'
 import BlogSection from '../components/BlogSection'
 import TitleSection from '../components/TitleSection'
 
+const Wrapper = styled.div`
+  margin-top: -60px;
+
+  @media screen and (max-width: 600px) {
+    margin-top: 0;
+  }
+`
+
 const IndexPage = ({ data }) => (
-  <div>
-    <TitleSection titleImage={data.titleImage} />
+  <Wrapper>
+    <TitleSection />
     <Philosophy />
     <Projects />
     <BlogSection blogPosts={data.blogPosts} />
-  </div>
+  </Wrapper>
 )
 
 export const query = graphql`
@@ -30,15 +39,6 @@ export const query = graphql`
             author
           }
         }
-      }
-    }
-    titleImage: imageSharp(id: { regex: "/developer_blur/" }) {
-      sizes(
-        maxWidth: 1366
-        quality: 80
-        traceSVG: { color: "#393939", threshold: 100 }
-      ) {
-        ...GatsbyImageSharpSizes_tracedSVG
       }
     }
   }

@@ -6,7 +6,7 @@ import dev_network from '../images/developer_network.svg'
 const Wrapper = styled.div`
   position: relative;
   width: 100vw;
-  margin: 0 auto;
+  margin: -1px auto 0;
   background: url(${background}) no-repeat;
   transition: background-size 200ms ease;
   background-size: auto 1600px;
@@ -139,5 +139,3 @@ export default ({ titleImage }) => (
     </Subtitle>
   </Wrapper>
 )
-
-// <TitleImage src={dev_network}/>
