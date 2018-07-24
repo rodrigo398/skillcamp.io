@@ -18,7 +18,6 @@ const BarTop = styled.div`
   height: 2px;
   width: 20px;
   align-self: ${props => (props.active ? 'center' : 'flex-start')};
-  //align-self: center;
   border-radius: 10px;
   background-color: #1b1b1b;
   transition: all 200ms;
@@ -32,7 +31,7 @@ const BarMiddle = styled.div`
   height: 2px;
   width: 30px;
   align-self: center;
-  border-radius: 100px;
+  border-radius: 10px;
   background-color: #1b1b1b;
   transition: all 200ms;
   transform: ${props => (props.active ? 'scale(0)' : 'scaleX(1)')};

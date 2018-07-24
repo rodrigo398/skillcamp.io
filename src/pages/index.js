@@ -7,7 +7,6 @@ import TitleSection from '../components/TitleSection'
 
 const Wrapper = styled.div`
   margin-top: -60px;
-
   @media screen and (max-width: 600px) {
     margin-top: 0;
   }
