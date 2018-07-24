@@ -170,7 +170,7 @@ class Header extends React.Component {
     this.setState(prevState => ({ menuActive: !prevState.menuActive }))
 
   componentDidMount() {
-    if (window !== undefined) {
+    if (typeof window !== 'undefined' && window.addEventListener) {
       window.addEventListener('resize', () => {
         if (!this.state.mobile && window.innerWidth < 600) {
           this.setState({ mobile: true })
