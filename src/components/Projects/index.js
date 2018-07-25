@@ -13,6 +13,11 @@ const Wrapper = styled.div`
   overflow: hidden;
   padding: 100px 20px;
 
+  @media screen and (min-width: 1440px) {
+    padding: 200px 0;
+    height: 1450px;
+  }
+
   @media screen and (max-width: 1000px) {
     height: 1350px;
   }
@@ -33,7 +38,7 @@ const TransitionTop = styled.img`
 const TransitionBottom = styled.img`
   width: 100vw;
   position: absolute;
-  bottom: -28px;
+  bottom: -30px;
   left: 0;
 `
 
@@ -68,10 +73,12 @@ const StripeRed = styled.span`
 `
 
 const Header = styled.div`
+  max-width: 1440px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 100px 15px;
+  margin: 100px auto;
+  padding: 0 20px;
 `
 
 const Title = styled.h3`
@@ -82,17 +89,19 @@ const Title = styled.h3`
 `
 
 const ProjectsContainer = styled.div`
+  max-width: 1440px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   align-self: center;
+  padding: 0 20px;
 
   @media screen and (max-width: 1000px) {
     grid-template-columns: repeat(2, 1fr);
   }
-  @media screen and (max-width: 680px) {
+  @media screen and (max-width: 700px) {
     grid-template-columns: repeat(1, 1fr);
-    padding: 0 20px;
   }
 `
 
@@ -126,17 +135,29 @@ const Paragraph = styled.div`
   font-weight: 100;
   font-size: 18px;
   letter-spacing: 0.5px;
+  padding: 0 20px;
   z-index: 10;
+
+  @media screen and (min-width: 1440px) {
+    bottom: 300px;
+    right: 0;
+    left: 0;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 1000px;
+    font-size: 30px;
+  }
 
   @media screen and (max-width: 1000px) {
     bottom: 175px;
-    padding: 0;
   }
 
   @media screen and (max-width: 700px) {
     bottom: 150px;
+    right: 0;
+    left: 0;
     text-align: center;
-    padding: 0 20px;
+    margin: 0 auto;
   }
 `
 
