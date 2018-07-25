@@ -15,7 +15,6 @@ const Wrapper = styled.div`
 const IndexPage = ({ data }) => (
   <Wrapper>
     <TitleSection />
-    <Philosophy />
     <Projects />
     <BlogSection blogPosts={data.blogPosts} />
   </Wrapper>
