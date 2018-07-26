@@ -1,51 +1,41 @@
 import React from 'react'
 import styled from 'styled-components'
-import background from '../images/title_background.svg'
+import transitionBottom from '../images/title_transition_bottom.svg'
 import dev_network from '../images/developer_network.svg'
 
 const Wrapper = styled.div`
   position: relative;
   width: 100vw;
   margin: -1px auto 0;
-  background: url(${background}) no-repeat;
-  transition: background-size 200ms ease;
-  background-size: auto 1600px;
-  min-height: 1700px;
+  background: linear-gradient(to right, #fda253, #fbc15a);
+  min-height: 1200px;
   overflow: hidden;
 
-  @media screen and (max-width: 1920px) {
-    background-size: auto 1200px;
-    min-height: 1500px;
-  }
-
-  @media screen and (max-width: 1440px) {
-    background-size: auto 1000px;
-    min-height: 1200px;
-  }
-
   @media screen and (max-width: 1280px) {
-    background-size: auto 800px;
     min-height: 1050px;
   }
 
   @media screen and (max-width: 1000px) {
-    background-size: auto 700px;
     min-height: 900px;
   }
 
   @media screen and (max-width: 700px) {
-    background-size: auto 600px;
     min-height: 700px;
   }
 
   @media screen and (max-width: 500px) {
-    background-size: auto 600px;
     grid-template-areas: 'subtitle subtitle';
   }
 `
 
+const Container = styled.div`
+  position: relative;
+  max-width: 1440px;
+  margin: 0 auto;
+`
+
 const TitleImage = styled.img`
-  width: 2300px;
+  width: 1440px;
   max-width: 2000px;
   position: absolute;
   top: 180px;
@@ -54,16 +44,6 @@ const TitleImage = styled.img`
   margin: 0;
   object-fit: cover;
   transition: all 200ms ease;
-
-  @media screen and (max-width: 1920px) {
-    width: 1920px;
-    top: 200px;
-  }
-
-  @media screen and (max-width: 1440px) {
-    width: 1440px;
-    top: 200px;
-  }
 
   @media screen and (max-width: 1280px) {
     width: 1280px;
@@ -95,6 +75,7 @@ const Subtitle = styled.div`
   color: #222;
   text-align: left;
   transition: left 200ms ease;
+  z-index: 9;
 
   @media screen and (max-width: 1920px) {
     width: 500px;
@@ -131,11 +112,101 @@ const Subtitle = styled.div`
   }
 `
 
+const TransitionBottom = styled.img`
+  position: absolute;
+  height: 830px;
+  bottom: -1px;
+  left: 0;
+  z-index: 5;
+  margin: 0;
+  max-width: none;
+
+  @media screen and (max-width: 1440px) {
+    height: 630px;
+  }
+
+  @media screen and (max-width: 1280px) {
+    height: 530px;
+  }
+
+  @media screen and (max-width: 1000px) {
+    height: 445px;
+  }
+
+  @media screen and (max-width: 700px) {
+    height: 315px;
+  }
+
+  @media screen and (max-width: 500px) {
+    height: 335px;
+  }
+`
+
+const StripeLight = styled.span`
+  position: absolute;
+  height: 200px;
+  width: 1000px;
+  bottom: 500px;
+  right: -220px;
+  background-color: #fdc55c;
+  transform: rotate(-45deg);
+  z-index: 1;
+
+  @media screen and (max-width: 1000px) {
+    height: 200px;
+    width: 600px;
+    bottom: 300px;
+    right: -160px;
+  }
+`
+
+const StripeMed = styled.span`
+  position: absolute;
+  height: 200px;
+  width: 1000px;
+  bottom: 300px;
+  right: -230px;
+  background-color: #fda545;
+  transform: rotate(-45deg);
+  z-index: 1;
+
+  @media screen and (max-width: 1000px) {
+    height: 100px;
+    width: 538px;
+    bottom: 309px;
+    right: -160px;
+  }
+`
+
+const StripeDark = styled.span`
+  position: absolute;
+  height: 230px;
+  width: 600px;
+  bottom: 210px;
+  right: -250px;
+  background-color: #fd9043;
+  transform: rotate(-45deg);
+  z-index: 1;
+
+  @media screen and (max-width: 1000px) {
+    height: 200px;
+    width: 400px;
+    bottom: 140px;
+    right: -180px;
+  }
+`
+
 export default ({ titleImage }) => (
   <Wrapper>
-    <TitleImage src={dev_network} />
-    <Subtitle>
-      Collaborate with developers from around the world to upgrade your skills
-    </Subtitle>
+    <Container>
+      <TitleImage src={dev_network} />
+      <Subtitle>
+        Collaborate with developers from around the world to upgrade your skills
+      </Subtitle>
+    </Container>
+    <TransitionBottom src={transitionBottom} />
+    <StripeLight />
+    <StripeMed />
+    <StripeDark />
   </Wrapper>
 )

@@ -11,14 +11,14 @@ const HeaderWrapper = styled.div`
   background: ${props =>
     props.atTop && props.isHome
       ? 'transparent'
-      : 'linear-gradient(to right, #fea44e, #ffbc3a)'};
+      : 'linear-gradient(to right, #FDA253, #fbc15a)'};
   color: #1b1b1b;
   z-index: 100;
   transition: background 200ms;
 
   @media screen and (max-width: 600px) {
     position: relative;
-    background: linear-gradient(to right, #fea44e, #ffbc3a);
+    background: linear-gradient(to right, #fda253, #fbc15a);
   }
 `
 
@@ -30,6 +30,8 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   transition: all 200ms ease;
+  max-width: 1440px;
+  margin: 0 auto;
 
   @media screen and (max-width: 600px) {
     padding: 15px 0;

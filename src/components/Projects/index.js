@@ -8,77 +8,131 @@ import transitionBottom from '../../images/projects_transition_bottom.svg'
 
 const Wrapper = styled.div`
   position: relative;
-  height: 1100px;
+  height: 1150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   background: linear-gradient(to bottom right, #1b1b1b, #333333);
   overflow: hidden;
-  padding: 100px 20px;
+  padding: 150px 20px;
 
   @media screen and (min-width: 1440px) {
-    padding: 200px 0;
-    height: 1450px;
+    height: 2000px;
+    padding: 400px 20px;
   }
 
   @media screen and (max-width: 1000px) {
-    height: 1350px;
+    height: 1450px;
   }
 
   @media screen and (max-width: 700px) {
-    padding: 50px 0 0;
-    height: 1650px;
+    height: 1800px;
   }
 `
 
 const TransitionTop = styled.img`
-  width: 100vw;
+  height: 150px;
   position: absolute;
   top: -1px;
   left: 0;
+  z-index: 5;
+
+  margin: 0;
+  max-width: none;
+
+  @media screen and (min-width: 1440px) {
+    height: 367px;
+  }
+
+  @media screen and (max-width: 700px) {
+    height: 100px;
+  }
 `
 
 const TransitionBottom = styled.img`
-  width: 100vw;
+  height: 150px;
   position: absolute;
-  bottom: -30px;
+  bottom: -1px;
   left: 0;
+  z-index: 5;
+
+  margin: 0;
+  max-width: none;
+
+  @media screen and (min-width: 1440px) {
+    height: 367px;
+  }
+
+  @media screen and (max-width: 700px) {
+    height: 100px;
+  }
 `
 
 const StripeBlue = styled.span`
-  height: 50px;
-  width: 450px;
   position: absolute;
-  bottom: 100px;
-  right: -100px;
+  height: 140px;
+  width: 900px;
+  bottom: 270px;
+  right: -230px;
   background-color: #24caf0;
   transform: rotate(-45deg);
+  z-index: 1;
+
+  @media screen and (max-width: 700px) {
+    height: 70px;
+    width: 450px;
+    bottom: 145px;
+    right: -100px;
+  }
 `
 
 const StripeYellow = styled.span`
-  height: 100px;
-  width: 350px;
   position: absolute;
-  bottom: 20px;
-  right: -100px;
+  height: 150px;
+  width: 700px;
+  bottom: 200px;
+  right: -225px;
   background-color: #fdc153;
   transform: rotate(-45deg);
+  z-index: 1;
+
+  @media screen and (max-width: 700px) {
+    height: 70px;
+    width: 350px;
+    bottom: 94px;
+    right: -100px;
+  }
 `
 
 const StripeRed = styled.span`
-  height: 100px;
-  width: 200px;
   position: absolute;
-  bottom: -10px;
-  right: -80px;
+  height: 180px;
+  width: 600px;
+  bottom: 40px;
+  right: -256px;
   background-color: #f24d47;
   transform: rotate(-45deg);
+  z-index: 1;
+
+  @media screen and (max-width: 700px) {
+    height: 70px;
+    width: 200px;
+    bottom: 48px;
+    right: -80px;
+  }
 `
 
 const Header = styled.div`
+  width: 100%;
   max-width: 1440px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 100px auto;
   padding: 0 20px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 700px) {
+  }
 `
 
 const Title = styled.h3`
@@ -89,13 +143,16 @@ const Title = styled.h3`
 `
 
 const ProjectsContainer = styled.div`
+  position: relative;
+  width: 100%;
   max-width: 1440px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
-  align-self: center;
+  align-self: stretch;
+  margin: 0 auto;
   padding: 0 20px;
+  z-index: 10;
 
   @media screen and (max-width: 1000px) {
     grid-template-columns: repeat(2, 1fr);
@@ -127,8 +184,6 @@ const Button = styled(Link)`
 `
 
 const Paragraph = styled.div`
-  position: absolute;
-  bottom: 200px;
   max-width: 600px;
   color: white;
   margin: 0;
@@ -139,9 +194,6 @@ const Paragraph = styled.div`
   z-index: 10;
 
   @media screen and (min-width: 1440px) {
-    bottom: 300px;
-    right: 0;
-    left: 0;
     text-align: center;
     margin: 0 auto;
     max-width: 1000px;
@@ -149,11 +201,11 @@ const Paragraph = styled.div`
   }
 
   @media screen and (max-width: 1000px) {
-    bottom: 175px;
+    bottom: 250px;
   }
 
   @media screen and (max-width: 700px) {
-    bottom: 150px;
+    bottom: 220px;
     right: 0;
     left: 0;
     text-align: center;
