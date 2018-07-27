@@ -223,8 +223,9 @@ const CodeBracket = styled.img`
   left: calc(${props => props.placement.x / 100} * 100vw);
   transform: rotate(${props => props.placement.a}deg);
   z-index: 1;
+  transition: all 800ms;
   animation: float 10s linear infinite;
-  animation-delay: ${props => props.placement.delay}ms;
+  animation-delay: -${props => props.placement.delay}ms;
 
   @keyframes float {
     0% {
