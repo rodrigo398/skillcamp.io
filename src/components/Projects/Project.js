@@ -56,9 +56,7 @@ const CardBack = styled.div`
   left: 0;
   transition: transform 800ms ease;
   backface-visibility: hidden;
-  box-shadow: 0 1.5rem 4rem rgba(black, 0.3);
   transform: rotateY(180deg);
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;

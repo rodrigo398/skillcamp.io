@@ -223,7 +223,7 @@ const CodeBracket = styled.img`
   left: calc(${props => props.placement.x / 100} * 100vw);
   transform: rotate(${props => props.placement.a}deg);
   z-index: 1;
-  animation: float 9s linear infinite;
+  animation: float 10s linear infinite;
   animation-delay: ${props => props.placement.delay}ms;
 
   @keyframes float {
@@ -231,13 +231,13 @@ const CodeBracket = styled.img`
       transform: translateY(0) rotate(${props => props.placement.a}deg);
     }
     25% {
-      transform: translateY(-40px) rotate(25deg);
+      transform: translateY(50px) rotate(45deg);
     }
     50% {
-      transform: translateY(40px) rotate(0deg);
+      transform: translateY(100px) rotate(0deg);
     }
-    50% {
-      transform: translateY(-40px) rotate(-25deg);
+    75% {
+      transform: translateY(50px) rotate(-45deg);
     }
     100% {
       transform: translateY(0) rotate(${props => props.placement.a}deg);
@@ -254,15 +254,16 @@ const Projects = () => {
   }
 
   const generateBackgroundPattern = (rows, columns) => {
+    const c_width = 100 / (columns * 2)
     let placements = []
     for (let i = 0; i < rows; i++) {
-      let n = i % 2 === 0 ? 5 : 20
-      for (let j = n; j <= columns * 30; j += 30) {
+      let n = i % 2 === 0 ? 0 : c_width / 2
+      for (let j = n; j <= columns * c_width * 2; j += c_width * 2) {
         placements.push({
           x: j,
-          y: i * 200 + 100 * (Math.random() - 0.5),
+          y: i * 220 + 100 * (Math.random() - 0.5) + 50,
           a: Math.floor((Math.random() - 0.5) * 120),
-          delay: Math.random() * 8000,
+          delay: Math.random() * 10000,
         })
       }
     }
@@ -294,10 +295,12 @@ const Projects = () => {
       <StripeBlue />
       <StripeYellow />
       <StripeRed />
-      {generateBackgroundPattern(7, 3)}
+      {generateBackgroundPattern(8, 3)}
       <TransitionBottom src={transitionBottom} />
     </Wrapper>
   )
 }
 
 export default Projects
+
+//
