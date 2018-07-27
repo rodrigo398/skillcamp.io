@@ -25,7 +25,7 @@ const CardFront = styled.div`
   background-color: white;
   transition: transform 800ms ease;
   backface-visibility: hidden;
-  box-shadow: 0 1.5rem 4rem rgba(black, 0.15);
+  box-shadow: 0 1.5rem 4rem rgba(black, 0.3);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -41,9 +41,9 @@ const CardFront = styled.div`
     width: 100%;
     height: 150px;
     border-radius: 5px;
- }
+  }
  
- ${Card}:hover &, ${Card}:active {
+  ${Card}:hover &, ${Card}:active {
     transform :rotateY(-180deg)
   }
 `
@@ -56,7 +56,7 @@ const CardBack = styled.div`
   left: 0;
   transition: transform 800ms ease;
   backface-visibility: hidden;
-  box-shadow: 0 1.5rem 4rem rgba(black, 0.15);
+  box-shadow: 0 1.5rem 4rem rgba(black, 0.3);
   transform: rotateY(180deg);
 
   display: flex;
@@ -74,7 +74,7 @@ const CardBack = styled.div`
     max-width: 300px;
   }
 
-  ${Card}:hover & {
+  ${Card}:hover &, ${Card}:active {
     transform: rotateY(0deg);
   }
 `
@@ -133,6 +133,11 @@ const Button = styled.a`
   font-size: 16px;
   text-decoration: none;
   box-shadow: 0 5px 10px rgba(0, 0, 0, ${props => (props.fill ? '0' : '0.2')});
+  transition: transform 200ms ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+  }
 `
 
 class Project extends React.Component {

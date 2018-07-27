@@ -8,6 +8,7 @@ import transitionBottom from '../../images/projects_transition_bottom.svg'
 import gitnotes from '../../images/gitnotes_card_logo.svg'
 import skillcamp from '../../images/skillcamp_card_logo.svg'
 import skillbot from '../../images/skillbot_card_logo.svg'
+import code_bracket from '../../images/code_bracket.svg'
 
 const Wrapper = styled.div`
   position: relative;
@@ -18,6 +19,7 @@ const Wrapper = styled.div`
   background: linear-gradient(to bottom right, #1b1b1b, #333333);
   overflow: hidden;
   padding: 150px 30px;
+  z-index: 0;
 
   @media screen and (min-width: 1440px) {
     height: 2050px;
@@ -80,7 +82,7 @@ const StripeBlue = styled.span`
   right: -230px;
   background-color: #24caf0;
   transform: rotate(-45deg);
-  z-index: 1;
+  z-index: 2;
 
   @media screen and (max-width: 700px) {
     height: 70px;
@@ -98,7 +100,7 @@ const StripeYellow = styled.span`
   right: -225px;
   background-color: #fdc153;
   transform: rotate(-45deg);
-  z-index: 1;
+  z-index: 2;
 
   @media screen and (max-width: 700px) {
     height: 70px;
@@ -116,7 +118,7 @@ const StripeRed = styled.span`
   right: -256px;
   background-color: #f24d47;
   transform: rotate(-45deg);
-  z-index: 1;
+  z-index: 2;
 
   @media screen and (max-width: 700px) {
     height: 70px;
@@ -214,11 +216,59 @@ const Paragraph = styled.div`
   }
 `
 
+const CodeBracket = styled.img`
+  height: 50px;
+  position: absolute;
+  top: ${props => props.placement.y}px;
+  left: calc(${props => props.placement.x / 100} * 100vw);
+  transform: rotate(${props => props.placement.a}deg);
+  z-index: 1;
+  animation: float 9s linear infinite;
+  animation-delay: ${props => props.placement.delay}ms;
+
+  @keyframes float {
+    0% {
+      transform: translateY(0) rotate(${props => props.placement.a}deg);
+    }
+    25% {
+      transform: translateY(-40px) rotate(25deg);
+    }
+    50% {
+      transform: translateY(40px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-40px) rotate(-25deg);
+    }
+    100% {
+      transform: translateY(0) rotate(${props => props.placement.a}deg);
+    }
+  }
+`
+
 const Projects = () => {
   const renderProjects = () => {
     const images = [gitnotes, skillcamp, skillbot]
     return projectData.map((project, i) => (
       <Project project={project} image={images[i]} />
+    ))
+  }
+
+  const generateBackgroundPattern = (rows, columns) => {
+    let placements = []
+    for (let i = 0; i < rows; i++) {
+      let n = i % 2 === 0 ? 5 : 20
+      for (let j = n; j <= columns * 30; j += 30) {
+        placements.push({
+          x: j,
+          y: i * 200 + 100 * (Math.random() - 0.5),
+          a: Math.floor((Math.random() - 0.5) * 120),
+          delay: Math.random() * 8000,
+        })
+      }
+    }
+
+    return placements.map(placement => (
+      <CodeBracket src={code_bracket} placement={placement} />
     ))
   }
 
@@ -244,6 +294,7 @@ const Projects = () => {
       <StripeBlue />
       <StripeYellow />
       <StripeRed />
+      {generateBackgroundPattern(7, 3)}
       <TransitionBottom src={transitionBottom} />
     </Wrapper>
   )
