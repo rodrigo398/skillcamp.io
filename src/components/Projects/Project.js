@@ -1,68 +1,72 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Wrapper = styled.div`
+const Card = styled.div`
   position: relative;
-  height: 300px;
+  height: 350px;
   width: 100%;
   max-width: 500px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   justify-self: center;
-  background: url(${props => props.imgURL}) center;
+  background: transparent;
   background-size: cover;
   border-radius: 5px;
+  perspective: 1500px;
 `
 
-const Title = styled.div`
-  position: absolute;
-  top: 30px;
-  color: white;
-  background: rgba(20, 20, 20, 0.8);
-  padding: 10px 15px;
-  border-radius: 5px;
-  border-top: 10px solid #20a375;
-  font-weight: bold;
-  font-size: 24px;
-  letter-spacing: 0.4px;
-`
-
-const Description = styled.div`
-  height: 35%;
+const CardFront = styled.div`
   width: 100%;
+  height: 350px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  transition: transform 800ms ease;
+  backface-visibility: hidden;
+  box-shadow: 0 1.5rem 4rem rgba(black, 0.15);
   display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-  color: white;
-  background: rgba(20, 20, 20, 0.8);
-  margin: 0;
-  padding: 10px;
-  border-bottom: 10px solid #20a375;
-  font-size: 16px;
-  font-weight: 100;
-  border-radius: 0 0 5px 5px;
-
-  p {
-    width: 270px;
-    margin: 0;
+  padding-top: 15px;
+  border-radius: 5px;
+  
+  span {
+    position: absolute;
+    top: 0;
+    background: ${props => props.color};
+    z-index: 1;
+    width: 100%;
+    height: 150px;
+    border-radius: 5px;
+ }
+ 
+ ${Card}:hover &, ${Card}:active {
+    transform :rotateY(-180deg)
   }
 `
 
-const HoverContainer = styled.div`
-  height: 100%;
+const CardBack = styled.div`
   width: 100%;
+  height: 350px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 800ms ease;
+  backface-visibility: hidden;
+  box-shadow: 0 1.5rem 4rem rgba(black, 0.15);
+  transform: rotateY(180deg);
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   color: white;
-  background: rgba(20, 20, 20, 0.7);
+  background: ${props => props.color};
   padding: 20px 15px;
   border-radius: 5px;
-  border-top: 10px solid #20a375;
   cursor: default;
-
-  animation: light-fade 250ms ease;
 
   h3,
   p {
@@ -70,19 +74,50 @@ const HoverContainer = styled.div`
     max-width: 300px;
   }
 
-  @keyframes light-fade {
-    from {
-      opacity: 0.5;
-    }
-    to {
-      opacity: 1;
-    }
+  ${Card}:hover & {
+    transform: rotateY(0deg);
+  }
+`
+
+const Title = styled.div`
+  position: relative;
+  z-index: 5;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  letter-spacing: 0.4px;
+`
+
+const Image = styled.img`
+  position: relative;
+  z-index: 5;
+  height: 180px;
+  margin: 0;
+`
+
+const Description = styled.div`
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  margin: 0;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 100;
+
+  p {
+    width: 270px;
+    margin: 0;
   }
 `
 
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
+  color: black;
 `
 
 const Button = styled.a`
@@ -91,59 +126,42 @@ const Button = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${props => (props.green ? 'white' : '#20a375')};
-  background-color: ${props => (props.green ? '#20a375' : 'white')};
+  color: ${props => (props.fill ? 'white' : '#777')};
+  background-color: ${props => (props.fill ? 'transparent' : 'white')};
+  border: ${props => (props.fill ? 'solid 1px white' : 'none')}
   border-radius: 100px;
   font-size: 16px;
   text-decoration: none;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, ${props => (props.fill ? '0' : '0.2')});
 `
 
 class Project extends React.Component {
-  state = {
-    display: false,
-  }
-
-  openHover = () => this.setState({ display: true })
-
-  closeHover = () => this.setState({ display: false })
-
-  renderHover = () => {
-    const { title, description, codeURL, siteURL } = this.props.project
-    return (
-      <HoverContainer>
-        <h3>{title}</h3>
-        <p>{description}</p>
-        <ButtonWrapper>
-          <Button href={codeURL} target="_blank" green="true">
-            View Code
-          </Button>
-          <Button href={siteURL} target="_blank">
-            Live Demo
-          </Button>
-        </ButtonWrapper>
-      </HoverContainer>
-    )
-  }
-
   render() {
-    const { title, description, imgURL } = this.props.project
-    const { display } = this.state
+    const { title, description, codeURL, siteURL, color } = this.props.project
+    const { image } = this.props
     return (
-      <Wrapper
-        imgURL={imgURL}
-        onMouseEnter={this.openHover}
-        onMouseLeave={this.closeHover}
-      >
-        {display
-          ? this.renderHover()
-          : [
-              <Title>{title}</Title>,
-              <Description>
-                <p>{description}</p>
-              </Description>,
-            ]}
-      </Wrapper>
+      <Card>
+        <CardFront color={color} className="card__front">
+          <span name="background" />
+          <Title>{title}</Title>
+          <Image src={image} />
+          <Description>
+            <p>{description}</p>
+          </Description>
+        </CardFront>
+        <CardBack color={color} className="card__back">
+          <h3>{title}</h3>
+          <p>{description}</p>
+          <ButtonWrapper>
+            <Button href={codeURL} target="_blank" fill="true" color={color}>
+              View Code
+            </Button>
+            <Button href={siteURL} target="_blank" color={color}>
+              Live Demo
+            </Button>
+          </ButtonWrapper>
+        </CardBack>
+      </Card>
     )
   }
 }

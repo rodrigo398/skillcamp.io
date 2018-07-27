@@ -3,24 +3,24 @@
     "title": "GitNotes",
     "description":
       "GitNotes is a web-based note taking application, backed by git",
-    "imgURL": "https://picsum.photos/500/500?random",
     "codeURL": "https://gitlab.com/skillcamp/gitnotes/",
-    "siteURL": "http://gitnotes.skillcamp.io"
+    "siteURL": "http://gitnotes.skillcamp.io",
+    "color": "#1FB1D5"
   },
   {
     "title": "SkillCamp",
     "description":
       "SkillCamp is an open source community built by developers, for developers",
-    "imgURL": "https://picsum.photos/500/500?random",
     "codeURL": "https://gitlab.com/skillcamp/skillcamp.io/",
-    "siteURL": "http://skillcamp.io"
+    "siteURL": "http://skillcamp.io",
+    "color": "linear-gradient(to right, #fda253, #fbc15a)"
   },
   {
     "title": "Skill Camper",
     "description":
       "Skill Camper is a slack bot to help with the Skill Camp on boarding process",
-    "imgURL": "https://picsum.photos/500/500?random",
     "codeURL": "https://gitlab.com/skillcamp/project-ideas/issues",
-    "siteURL": "https://gitlab.com/skillcamp/project-ideas/issues"
+    "siteURL": "https://gitlab.com/skillcamp/project-ideas/issues",
+    "color": "#F24D47"
   }
 ]

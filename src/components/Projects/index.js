@@ -5,28 +5,32 @@ import Project from './Project'
 import projectData from './projectData.json'
 import transitionTop from '../../images/projects_transition_top.svg'
 import transitionBottom from '../../images/projects_transition_bottom.svg'
+import gitnotes from '../../images/gitnotes_card_logo.svg'
+import skillcamp from '../../images/skillcamp_card_logo.svg'
+import skillbot from '../../images/skillbot_card_logo.svg'
 
 const Wrapper = styled.div`
   position: relative;
-  height: 1150px;
+  height: 1200px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   background: linear-gradient(to bottom right, #1b1b1b, #333333);
   overflow: hidden;
-  padding: 150px 20px;
+  padding: 150px 30px;
 
   @media screen and (min-width: 1440px) {
-    height: 2000px;
+    height: 2050px;
     padding: 400px 20px;
   }
 
   @media screen and (max-width: 1000px) {
-    height: 1450px;
+    height: 1500px;
   }
 
   @media screen and (max-width: 700px) {
-    height: 1800px;
+    height: 1850px;
+    padding: 150px 15px;
   }
 `
 
@@ -128,7 +132,6 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
   margin: 0 auto;
 
   @media screen and (max-width: 700px) {
@@ -151,7 +154,6 @@ const ProjectsContainer = styled.div`
   grid-gap: 20px;
   align-self: stretch;
   margin: 0 auto;
-  padding: 0 20px;
   z-index: 10;
 
   @media screen and (max-width: 1000px) {
@@ -190,7 +192,6 @@ const Paragraph = styled.div`
   font-weight: 100;
   font-size: 18px;
   letter-spacing: 0.5px;
-  padding: 0 20px;
   z-index: 10;
 
   @media screen and (min-width: 1440px) {
@@ -215,7 +216,10 @@ const Paragraph = styled.div`
 
 const Projects = () => {
   const renderProjects = () => {
-    return projectData.map(project => <Project project={project} />)
+    const images = [gitnotes, skillcamp, skillbot]
+    return projectData.map((project, i) => (
+      <Project project={project} image={images[i]} />
+    ))
   }
 
   return (
