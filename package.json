@@ -9,7 +9,7 @@
     "gatsby-image": "^1.0.54",
     "gatsby-link": "^1.6.40",
     "gatsby-plugin-react-helmet": "^2.0.10",
-    "gatsby-plugin-sharp": "^1.6.48",
+    "gatsby-plugin-sharp": "^5.16.0",
     "gatsby-plugin-styled-components": "^2.0.11",
     "gatsby-plugin-typography": "^1.7.19",
     "gatsby-source-filesystem": "^1.5.38",
